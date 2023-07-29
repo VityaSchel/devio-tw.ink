@@ -1,0 +1,76 @@
+.fsc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  @extend .fsc;
+  background: linear-gradient(to top, #121212, #000000);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.hidden {
+    display: none;
+  }
+
+  .foreground {
+    opacity: 0;
+    background-color: #000;
+    @extend .fsc;
+    z-index: 1;
+    transition: opacity 2s ease-out;
+    transition-delay: 1s;
+    pointer-events: none;
+
+    &.isStarting {
+      opacity: 1;
+    }
+  }
+
+  .button {
+    border: 0;
+    background: linear-gradient(to bottom, #121212, #000000);
+    box-shadow: 0 10px 30px black;
+    border-radius: 40%;
+    color: #888888;
+    padding: 40px 60px;
+    cursor: pointer;
+    transition: opacity 3s ease-out;
+    
+    svg {
+      width: 128px;
+      height: 128px;
+    }
+
+    &.isStarting {
+      opacity: 0;
+      pointer-events: none;
+      cursor: auto;
+    }
+  }
+}
+
+.videoContainer {
+  @extend .fsc;
+  z-index: 9;
+  background-color: #515151;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // opacity: 0;
+  pointer-events: none;
+
+  .video {
+    height: 100%;
+    width: auto;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
